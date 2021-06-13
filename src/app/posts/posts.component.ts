@@ -17,9 +17,11 @@ export class PostsComponent {
 
   // Define every url route for every function, or else it creates a CORS issue. 
   private url = "http://localhost:5000/posts";
-  private getOnepostUrl = "http://localhost:5000/posts/"
-  private postUrl = "http://localhost:5000/posts/addNew"
-  private updatePostUrl = "http://localhost:5000/posts/update/"
+  private getOnepostUrl = "http://localhost:5000/posts/";
+  private postUrl = "http://localhost:5000/posts/addNew";
+  private updatePostUrl = "http://localhost:5000/posts/update/";
+  private deletePostUrl = "http://localhost:5000/posts/delete/";
+
 
   constructor(private http:Http) {
     http.get(this.url)
@@ -75,6 +77,15 @@ export class PostsComponent {
       });
     return value;
     // To do: being able to redirect to the home page.
+  }
+
+  deleteOnePost(){
+    this.http.delete(this.deletePostUrl + 2)
+      .subscribe(response => {
+        this.FirstPost = response.json()
+      });
+      // this.testTitle = this.FirstPost['title'];
+      // this.testComponent = this.FirstPost['content'];
   }
 
 }
