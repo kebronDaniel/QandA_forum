@@ -1,0 +1,99 @@
+<p>
+  posts works!
+</p>
+<ul class="list-group">
+  <li *ngFor = "let post of posts"
+    class="list-group-item">
+    {{post.title}}
+    <br>
+    {{post.content}}
+</li>
+</ul>
+
+<hr>
+<p>
+  This is to add a new post using a form.
+</p>
+<br>
+<form [formGroup] = "postForm" (ngSubmit)="post()">
+  <div class="form-group">
+      <label for="postTitle">Title</label>
+      <input
+          formControlName = "title"
+          id = "postTitle"
+          type="text" 
+          class="form-control">
+          <div *ngIf = "title.touched && title.invalid" class="alert alert-danger">
+              <div *ngIf = "title.errors.required"> Title is Required!</div>
+              <div *ngIf = "title.errors.maxlength">Title Shouldn't be this long!</div>
+          </div>
+  </div>
+  <br>
+  <div class="formgroup">
+      <label for="PostContent">Content</label>
+      <textarea 
+        formControlName = "content" 
+        id="PostContent" 
+        cols="30" 
+        rows="10"
+      >
+      </textarea>
+        <div *ngIf = "content.touched && content.invalid" class="alert alert-danger">
+            Content is required!
+        </div>
+  </div>
+  <br>
+  <button class="btn btn-primary" type="submit">Post</button>
+</form>
+
+<p>This is the newly created form content!</p>
+<p
+  *ngIf = "singlePost"
+>
+{{singlePost.title}}
+<br>
+{{singlePost.content}}
+</p>
+
+<hr>
+<button (click) = "getOnePost()">
+  Get the First post.
+</button>
+<p>This is for the update post trail one.</p>
+<p>This only edits the first post all the time.</p>
+
+<div *ngIf = "FirstPost">
+  <p>{{FirstPost.title}}</p>
+  <form [formGroup] = "updatePostForm" (ngSubmit)="updatePost()">
+    <div class="form-group">
+        <label for="updatePostTitle">Title</label>
+        <input
+            formControlName = "title"
+            id = "updatePostTitle"
+            type="text" 
+            class="form-control"
+        >
+            <div *ngIf = "title.touched && title.invalid" class="alert alert-danger">
+                <div *ngIf = "title.errors.required"> Title is Required!</div>
+                <div *ngIf = "title.errors.maxlength">Title Shouldn't be this long!</div>
+            </div>
+    </div>
+    <br>
+    <div class="formgroup">
+        <label for="updatePostContent">Content</label>
+        <textarea 
+          formControlName = "content" 
+          id="updatePostContent" 
+          cols="30" 
+          rows="10"
+        >
+          {{FirstPost.content}}
+        </textarea>
+          <div *ngIf = "content.touched && content.invalid" class="alert alert-danger">
+              Content is required!
+          </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Update-Post</button>
+  </form>
+</div>
