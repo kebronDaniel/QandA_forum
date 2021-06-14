@@ -5,6 +5,7 @@
   <li *ngFor = "let post of posts"
     class="list-group-item">
     {{post.title}}
+    {{post.id}}
     <br>
     {{post.content}}
 </li>
@@ -56,7 +57,7 @@
 </p>
 
 <hr>
-<button (click) = "getOnePost()">
+<button (click) = "getSinglePost()">
   Get the First post.
 </button>
 <p>This is for the update post trail one.</p>
@@ -96,9 +97,11 @@
     <br>
     <button class="btn btn-primary" type="submit">Update-Post</button>
   </form>
-</div>
+
 <hr>
-<p>This is to delete post number 2</p>
+<p>This is to delete post number {{FirstPost.id}}</p>
 <button 
 (click) = "deleteOnePost()"
 class="btn btn-danger">Delete</button>
+
+</div>
