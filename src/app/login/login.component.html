@@ -3,7 +3,8 @@
 <div class="col-md-4">
   <form [formGroup]="form" (ngSubmit) = "login()">
 
-    <h2 class="form-signin- headging">Please Sign In</h2>
+    <h2 class="form-signin- headging">Sign In</h2>
+    <hr>
 
     <div *ngIf = "invalidLogin" class="alert alert-danger">
       Invalid Username and/or Password

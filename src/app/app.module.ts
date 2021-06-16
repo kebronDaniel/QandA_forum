@@ -12,6 +12,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { RouterModule } from '@angular/router'; 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     CreatePostComponent,
     PostDetailsComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       {path : '', component : PostsComponent},
       {path: 'login', component : LoginComponent},
+      {path : 'register', component : RegisterComponent},
       // {path : 'addPost', component : CreatePostComponent},
       // {path : 'postDetails/:id', component : PostDetailsComponent},
       // {path : '**', component: NotFoundComponent}
