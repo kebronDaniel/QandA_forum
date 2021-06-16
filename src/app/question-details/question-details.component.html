@@ -9,4 +9,14 @@
       </li>
     </ul>
   </div>
+
+  <div>
+    <p>Answer Given by {{user}}</p>
+    <ul>
+      <li *ngFor = "let userAnswer of userAnswers">
+        {{userAnswer.content}}
+      </li>
+    </ul>
+  </div>
+
 </div>

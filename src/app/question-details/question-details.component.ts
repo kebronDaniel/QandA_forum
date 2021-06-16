@@ -12,6 +12,9 @@ export class QuestionDetailsComponent implements OnInit {
 
   question:string = "";
   answers:any[];
+  userAnswers:any[];
+  user = "";
+  user_id:number;
 
   constructor(private datafetch : DatafetchService, 
       private router : Router, 
@@ -43,12 +46,17 @@ export class QuestionDetailsComponent implements OnInit {
         }
       );
 
+    // this is to get the username and id
+    this.user = this.authservice.getCurrentUser().name;
+    this.user_id = this.authservice.getCurrentUser().user_id;
+  
+
     // This is to get the answers by the user that logged in
     
-    this.datafetch.getAnswers(q_id,)
+    this.datafetch.getUserAnswers(q_id,this.user_id)
       .subscribe(
         answers => {
-          this.answers = answers
+          this.userAnswers = answers
         },
         error => { 
           alert('Un expected Error Occured');
@@ -56,8 +64,7 @@ export class QuestionDetailsComponent implements OnInit {
         }
       );
 
-    // this is to get the username
-    let user = this.authservice.getCurrentUser.name.toString;
+    
 
   } 
 

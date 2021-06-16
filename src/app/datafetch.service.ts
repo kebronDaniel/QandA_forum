@@ -30,6 +30,10 @@ export class DatafetchService {
       .map(response => response.json());
   }
 
+  getUserAnswers(q_id, u_id){
+    return this.http.get(this.allAnswers + q_id + '/' + u_id)
+      .map(response => response.json());
+  }
   
 
 }
