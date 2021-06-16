@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         console.log(error);
       }
       );
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
     // To do: being able to redirect to the home page.
   }
 

@@ -22,6 +22,7 @@ export class AuthService {
       });
 
   }
+
   newUser(value){
     return this.http.post(this.addUser,value)
     .map(
@@ -29,6 +30,10 @@ export class AuthService {
       // This would map the object from the server or Api to Js iterable object.
     )
     ;
+  }
+
+  logout(){
+    return localStorage.removeItem('token')
   }
 
 }
