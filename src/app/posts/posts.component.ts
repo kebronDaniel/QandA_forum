@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { JwtHelper } from 'angular2-jwt';
+import { AuthService } from 'app/auth.service';
 import { PostService } from 'app/post.service';
 
 @Component({
@@ -10,11 +12,11 @@ import { PostService } from 'app/post.service';
 export class PostsComponent implements OnInit{
 
   posts:any[];
-
+  user:any[];
   // Define every url route for every function, or else it creates a CORS issue. 
 
 
-  constructor(private service:PostService) { }
+  constructor(private service:PostService, private authservice : AuthService) { }
     ngOnInit(){
       this.service.getPosts()
         .subscribe(
@@ -25,6 +27,15 @@ export class PostsComponent implements OnInit{
         console.log(error);
       }
       );
+    }
+
+    getToken(){
+      let token = localStorage.getItem('token')
+      if(!token) return null;
+
+      let decoded = new JwtHelper().decodeToken(token)
+      console.log(decoded)
+      this.user = decoded.name
     }
   
 }

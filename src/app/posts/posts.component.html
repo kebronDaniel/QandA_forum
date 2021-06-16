@@ -3,7 +3,10 @@
     <li *ngFor = "let post of posts"
       class="list-group-item">
       <a href="#">{{post.title}}</a>
+      <p>{{authservice.getCurrentUser.public_id}}</p>
     </li>
   </ul>
 </div>
+<button (click) = "getToken()">Show Token</button>
+<p *ngIf = "authservice.isLoggedIn()">{{user}}</p>
 

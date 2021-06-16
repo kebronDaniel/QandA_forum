@@ -5,20 +5,17 @@
                 <li>
                     <a class="navbar-brand" routerLink="">Posts</a>
                 </li>
-                <li>
+                <li *ngIf = "!authservice.isLoggedIn()">
                     <a routerLink="login">Login</a>
                 </li>
-                <li>
+                <li *ngIf = "!authservice.isLoggedIn()">
                     <a routerLink="register">Register</a>
                 </li>
-                <li>
+                <li *ngIf = "authservice.isLoggedIn()">
                     <a (click)="authservice.logout()">Logout</a>
                 </li>
                 <li>
                     <a routerLink="addPost">Add post</a>
-                </li>
-                <li>
-                    <a routerLink="addPost">Logout</a>
                 </li>
             </ul>
         </div>
