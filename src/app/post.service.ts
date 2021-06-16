@@ -12,6 +12,7 @@ export class PostService {
   private updatePostUrl = "http://localhost:5000/posts/update/";
   private deletePostUrl = "http://localhost:5000/posts/delete/";
 
+
   constructor(private http:Http) { }
 
   getPosts(){
@@ -53,5 +54,6 @@ export class PostService {
   deletePost(id){
     return this.http.delete(this.deletePostUrl + id);
   }
+
 
 }

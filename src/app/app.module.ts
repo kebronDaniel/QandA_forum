@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './auth.service';
+
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { RegisterComponent } from './register/register.component';
     ])
   ],
   providers: [
-    PostService
+    PostService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
