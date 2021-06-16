@@ -1,0 +1,12 @@
+<div>
+  The Question is : <p>{{question}}</p>
+  <br>
+  <h5>Answers</h5>
+  <div>
+    <ul>
+      <li *ngFor = "let answer of answers">
+        {{answer.content}}
+      </li>
+    </ul>
+  </div>
+</div>
