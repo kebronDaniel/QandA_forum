@@ -11,6 +11,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { RouterModule } from '@angular/router'; 
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarComponent,
     CreatePostComponent,
     PostDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path : '', component : PostsComponent},
-      {path : 'addPost', component : CreatePostComponent},
-      {path : 'postDetails/:id', component : PostDetailsComponent},
-      {path : '**', component: NotFoundComponent}
+      {path: 'login', component : LoginComponent},
+      // {path : 'addPost', component : CreatePostComponent},
+      // {path : 'postDetails/:id', component : PostDetailsComponent},
+      // {path : '**', component: NotFoundComponent}
     ])
   ],
   providers: [

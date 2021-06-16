@@ -15,16 +15,16 @@ export class PostsComponent implements OnInit{
 
 
   constructor(private service:PostService) { }
-  ngOnInit(){
-    this.service.getPosts()
-      .subscribe(
-        allPosts => {
-        this.posts = allPosts; // here the allPosts is the mapped object in the service
-    }, error => {
-      alert('Un expected Error Occured');
-      console.log(error);
+    ngOnInit(){
+      this.service.getPosts()
+        .subscribe(
+          allPosts => {
+          this.posts = allPosts; // here the allPosts is the mapped object in the service
+      }, error => {
+        alert('Un expected Error Occured');
+        console.log(error);
+      }
+      );
     }
-    );
-  }
   
 }

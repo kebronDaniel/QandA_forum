@@ -1,12 +1,9 @@
-<p>
-  posts works!
-</p>
-<ul class="list-group">
-  <li *ngFor = "let post of posts"
-    class="list-group-item">
-     <a [routerLink]= "['postDetails/', post.id]" >{{post.title}}</a>
-    <br>
-    <br>
-</li>
-</ul>
+<div>
+  <ul class="list-group">
+    <li *ngFor = "let post of posts"
+      class="list-group-item">
+      <a href="#">{{post.title}}</a>
+    </li>
+  </ul>
+</div>
 
