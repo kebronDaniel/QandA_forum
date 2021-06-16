@@ -14,6 +14,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './auth.service';
+import { HomeComponent } from './home/home.component';
+import { DatafetchService } from './datafetch.service';
+import { QuestionDetailsComponent } from './question-details/question-details.component';
 
 
 
@@ -26,7 +29,9 @@ import { AuthService } from './auth.service';
     PostDetailsComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    QuestionDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,10 @@ import { AuthService } from './auth.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {path : '', component : PostsComponent},
+      {path : '', component : HomeComponent},
       {path: 'login', component : LoginComponent},
       {path : 'register', component : RegisterComponent},
+      {path : 'question/:id', component : QuestionDetailsComponent}
       // {path : 'addPost', component : CreatePostComponent},
       // {path : 'postDetails/:id', component : PostDetailsComponent},
       // {path : '**', component: NotFoundComponent}
@@ -44,7 +50,8 @@ import { AuthService } from './auth.service';
   ],
   providers: [
     PostService,
-    AuthService
+    AuthService,
+    DatafetchService
   ],
   bootstrap: [AppComponent]
 })
