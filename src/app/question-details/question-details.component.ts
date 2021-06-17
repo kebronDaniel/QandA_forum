@@ -17,6 +17,7 @@ export class QuestionDetailsComponent implements OnInit {
   user = "";
   user_id:number;
   question_id : number;
+  serverResponce:string = " ";
 
   constructor(private datafetch : DatafetchService, 
       private router : Router, 
@@ -128,6 +129,19 @@ export class QuestionDetailsComponent implements OnInit {
       return true;
     }
     else return false;
+  }
+
+  deletePost(){
+    this.datafetch.deleteUserAnswer(this.question_id,this.user_id)
+    .subscribe(
+      result => {
+        this.serverResponce = result
+    }, error => {
+      alert('Un expected Error Occured');
+      console.log(error);
+    }
+    );
+    this.router.navigate(['/']);
   }
 
 }

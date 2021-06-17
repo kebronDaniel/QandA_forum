@@ -10,6 +10,7 @@ export class DatafetchService {
   private addQuestionsUrl = "http://localhost:5000/addQuestion/"
   private addAnswerUrl = "http://localhost:5000/addAnswer/";
   private updateAnswerUrl = "http://localhost:5000/updateAnswer/";
+  private deleteAnswerUrl = "http://localhost:5000/deleteAnswer/";
 
   constructor(private http : Http) { }
 
@@ -52,6 +53,11 @@ export class DatafetchService {
     return this.http.put(this.updateAnswerUrl + q_id + '/' + u_id, value)
       .map(response => response.json());
   }
-  
+
+
+  deleteUserAnswer(q_id, u_id){
+    return this.http.delete(this.deleteAnswerUrl + q_id + '/' + u_id)
+      .map(response => response.json());
+  }
 
 }

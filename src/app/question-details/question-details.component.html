@@ -117,17 +117,17 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 <br>
                 <div *ngIf = "!apple()"><p>Test</p></div>
-                <button class="btn btn-primary btn-block " [disabled]="updateForm.invalid" type="submit">Post</button>
+                <div class="w3-half">
+                  <button class="w3-button w3-block w3-green w3-section" [disabled]="updateForm.invalid" type="submit">Update-Post</button>
+                </div>
+                <div class="w3-half">
+                  <button class="w3-button w3-block w3-red w3-section" (click) = "deletePost()">Delete-Post</button>
+                </div>
                 <br>
               </form>
             </div>
-          <!-- <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-green w3-section" title="Accept">POST</button>
-          </div>
-          <div class="w3-half">
-            <button class="w3-button w3-block w3-red w3-section" title="Decline">DELETE</button>
-          </div>
+          <!-- <p co
+            ntenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
         </div>
       </div>
       <br>
