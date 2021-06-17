@@ -96,14 +96,15 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 <br>
               </form>
             </div>
+
             <div *ngIf = "userHasAnswer">
               <p>Update</p>
               <form [formGroup]="updateForm" (ngSubmit) = "updateAnswer()">
                 <p>{{userAnswer}}</p>
                 <div class="form-group"> 
                   <textarea 
-                  formControlName = "content" 
-                    id="content" 
+                  formControlName = "ucontent" 
+                    id="ucontent" 
                     cols="46" 
                     rows="8"
                     class="form-control"
@@ -116,7 +117,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 <br>
                 <div *ngIf = "!apple()"><p>Test</p></div>
-                <button class="btn btn-primary btn-block " [disabled]="form.invalid" type="submit">Post</button>
+                <button class="btn btn-primary btn-block " [disabled]="updateForm.invalid" type="submit">Post</button>
                 <br>
               </form>
             </div>

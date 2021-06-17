@@ -95,11 +95,11 @@ export class QuestionDetailsComponent implements OnInit {
   }
 
   updateForm = new FormGroup({
-    'content': new FormControl('', Validators.required),
+    'ucontent': new FormControl('', Validators.required),
   })
 
   get ucontent(){
-    return this.updateForm.get('content');
+    return this.updateForm.get('ucontent');
   }
 
   updateAnswer(){
