@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'app/auth.service';
 import { DatafetchService } from 'app/datafetch.service';
+import { isEmpty } from 'rxjs/operator/isEmpty';
+
 
 @Component({
   selector: 'app-question-details',
@@ -13,7 +15,7 @@ export class QuestionDetailsComponent implements OnInit {
 
   question:string = "";
   answers:any[];
-  userAnswers:any [];
+  userAnswer:any [];
   user = "";
   user_id:number;
   question_id : number;
@@ -59,9 +61,8 @@ export class QuestionDetailsComponent implements OnInit {
     
     this.datafetch.getUserAnswers(q_id,this.user_id)
       .subscribe(
-        answers => {
-          this.userAnswers = answers.content
-          console.log()
+        answer => {
+          this.userAnswer = answer.content
         },
         error => { 
           alert('Un expected Error Occured');
@@ -124,13 +125,6 @@ export class QuestionDetailsComponent implements OnInit {
     return false;
   }
 
-  userHasAnswer(){
-    if(this.userAnswers){
-      return true;
-    }
-    else return false;
-  }
-
   deletePost(){
     this.datafetch.deleteUserAnswer(this.question_id,this.user_id)
     .subscribe(
@@ -142,6 +136,21 @@ export class QuestionDetailsComponent implements OnInit {
     }
     );
     this.router.navigate(['/']);
+  }
+
+  check(){
+    let userdata:any[];
+    this.datafetch.checkUserAnswer(this.question_id,this.user_id)
+      .subscribe(
+        answer => {
+          userdata = answer
+        },
+        error => { 
+          alert('Un expected Error Occured');
+          console.log(error); 
+        }
+      );
+    console.log(userdata)
   }
 
 }

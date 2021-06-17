@@ -1,0 +1,107 @@
+<!-- <div class="col-md-4"></div>
+
+<div class="col-md-4">
+  <form [formGroup]="form" (ngSubmit) = "ask()">
+
+    <h2 class="form-signin- headging">Ask A Question?</h2>
+    <hr>
+
+    <div class="form-group"> 
+      <label for="content">Your Question</label>
+      <textarea 
+      formControlName = "content" 
+        id="content" 
+        cols="10" 
+        rows="5"
+        class="form-control"
+        >
+      </textarea>
+      <div
+        *ngIf = "content.touched && content.invalid"
+        class="alert alert-danger">Content is Required!
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary btn-block " [disabled]="form.invalid" type="submit">Ask</button>
+    <br>
+  </form>
+
+</div>
+
+<div class="col-md-4"></div> -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+</style>
+<body class="w3-theme-l5">
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:5px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m1">
+      <!-- Profile -->
+      <br>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>John Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+            </div>
+            <div class="w3-half">
+          </div>
+        </div>
+      </div>
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m4">
+      <br>
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <h5 class="w3-opacity">My Answer</h5>
+          <textarea name="" id="" cols="46" rows="8"></textarea>
+          <!-- <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
+          <div class="w3-half">
+            <button class="w3-button w3-block w3-green w3-section" title="Accept">POST</button>
+          </div>
+          <div class="w3-half">
+            <button class="w3-button w3-block w3-red w3-section" title="Decline">DELETE</button>
+          </div>
+        </div>
+      </div>
+      <br>
+      
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+</body>
+</html> 

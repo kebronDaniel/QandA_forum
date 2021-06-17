@@ -73,7 +73,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <div class="w3-container">
           <h5 class="w3-opacity">My Answer</h5>
           <hr>
-            <div *ngIf = "!userHasAnswer"> 
               <form [formGroup]="form" (ngSubmit) = "giveAnswer()">
 
                 <div class="form-group"> 
@@ -91,13 +90,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                   </div>
                 </div>
                 <br>
-                <div *ngIf = "!apple()"><p>Test</p></div>
-                <button class="btn btn-primary btn-block " [disabled]="form.invalid" type="submit">Post</button>
+                <button class="w3-button w3-block w3-green w3-section" [disabled]="form.invalid" type="submit">Give-Answer</button>
                 <br>
               </form>
-            </div>
 
-            <div *ngIf = "userHasAnswer">
+            <!-- <div *ngIf = "!apple()">
               <p>Update</p>
               <form [formGroup]="updateForm" (ngSubmit) = "updateAnswer()">
                 <p>{{userAnswer}}</p>
@@ -116,7 +113,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                   </div>
                 </div>
                 <br>
-                <div *ngIf = "!apple()"><p>Test</p></div>
                 <div class="w3-half">
                   <button class="w3-button w3-block w3-green w3-section" [disabled]="updateForm.invalid" type="submit">Update-Post</button>
                 </div>
@@ -125,7 +121,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 <br>
               </form>
-            </div>
+              <button class="w3-button w3-block w3-red w3-section" (click) = "check()">check</button>
+            </div> -->
           <!-- <p co
             ntenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
         </div>
@@ -135,7 +132,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       
     <!-- End Right Column -->
     </div>
-    
   <!-- End Grid -->
   </div>
   
