@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'app/auth.service';
 import { DatafetchService } from 'app/datafetch.service';
 
 @Component({
@@ -11,7 +12,11 @@ export class HomeComponent implements OnInit {
 
   questions:any[];
 
-  constructor(private datafetch : DatafetchService, private route : ActivatedRoute, private router : Router) { }
+  constructor(private datafetch : DatafetchService, 
+    private route : ActivatedRoute, 
+    private router : Router,
+    private authservice: AuthService
+    ) { }
 
   ngOnInit() {
     this.datafetch.getQuestions()

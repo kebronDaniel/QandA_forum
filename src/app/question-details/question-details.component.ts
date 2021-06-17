@@ -121,10 +121,6 @@ export class QuestionDetailsComponent implements OnInit {
     // To do: being able to redirect to the home page.
   }
 
-  apple(){
-    return false;
-  }
-
   deletePost(){
     this.datafetch.deleteUserAnswer(this.question_id,this.user_id)
     .subscribe(
@@ -136,21 +132,6 @@ export class QuestionDetailsComponent implements OnInit {
     }
     );
     this.router.navigate(['/']);
-  }
-
-  check(){
-    let userdata:any[];
-    this.datafetch.checkUserAnswer(this.question_id,this.user_id)
-      .subscribe(
-        answer => {
-          userdata = answer
-        },
-        error => { 
-          alert('Un expected Error Occured');
-          console.log(error); 
-        }
-      );
-    console.log(userdata)
   }
 
 }

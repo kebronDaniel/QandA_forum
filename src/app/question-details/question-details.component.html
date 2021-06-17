@@ -72,9 +72,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <h5 class="w3-opacity">My Answer</h5>
+          <span class="w3-opacity">Put your new or corrected answer here.</span>
           <hr>
               <form [formGroup]="form" (ngSubmit) = "giveAnswer()">
-
                 <div class="form-group"> 
                   <textarea 
                   formControlName = "content" 
