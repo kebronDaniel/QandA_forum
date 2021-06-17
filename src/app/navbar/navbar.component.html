@@ -17,6 +17,9 @@
                 <li *ngIf = "authservice.isLoggedIn()">
                     <a routerLink="addQuestion">Ask Question</a>
                 </li>
+                <li *ngIf = "authservice.isLoggedIn()">
+                    <a routerLink="myQuestions">My Questions</a>
+                </li>
             </ul>
         </div>
     </div>

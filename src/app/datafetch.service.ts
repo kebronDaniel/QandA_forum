@@ -12,6 +12,7 @@ export class DatafetchService {
   private updateAnswerUrl = "http://localhost:5000/updateAnswer/";
   private deleteAnswerUrl = "http://localhost:5000/deleteAnswer/";
   private checkUserAnswersUrl = "http://localhost:5000/checkAnswers/";
+  private getMyQuestionsUrl = "http://localhost:5000/myQuestions/";
 
   constructor(private http : Http) { }
 
@@ -27,6 +28,11 @@ export class DatafetchService {
 
   getOneQuestion(id){
     return this.http.get(this.oneQuestionurl + id)
+      .map(response => response.json());
+  }
+
+  getMyQuestions(u_id){
+    return this.http.get(this.getMyQuestionsUrl + u_id)
       .map(response => response.json());
   }
 

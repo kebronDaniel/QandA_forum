@@ -1,0 +1,144 @@
+<!-- <div>
+  The Question is : <p>{{question}}</p>
+  <br>
+  <h5>Answers</h5>
+  <div>
+    <ul>
+      <li *ngFor = "let answer of answers">
+        {{answer.content}}
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <p>Answer Given by {{user}}</p>
+    <ul>
+      <li *ngFor = "let userAnswer of userAnswers">
+        {{userAnswer.content}}
+      </li>
+    </ul>
+  </div>
+</div> -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+</style>
+<body class="w3-theme-l5">
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:5px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m1">
+      <!-- Profile -->
+      <br>
+    
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+      <h4>Question : {{question}}</h4>
+      <div *ngFor = "let answer of answers">
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <span class="w3-right w3-opacity">Show Time stamp</span>
+          <h4>{{user}}</h4><br>
+          <hr class="w3-clear">
+          <p>{{answer.content}}</p>
+            <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="w3-half">
+              </div>
+              <div class="w3-half">
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End Middle Column -->
+    </div>
+    
+    <!-- Right Column -->
+    <div class="w3-col m4">
+      <br> <br>
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <h5 class="w3-opacity">My Answer</h5>
+          <span class="w3-opacity">Put your new or corrected answer here.</span>
+          <hr>
+              <form [formGroup]="form" (ngSubmit) = "giveAnswer()">
+                <div class="form-group"> 
+                  <textarea 
+                  formControlName = "content" 
+                    id="content" 
+                    cols="46" 
+                    rows="8"
+                    class="form-control"
+                    >
+                  </textarea>
+                  <div
+                    *ngIf = "content.touched && content.invalid"
+                    class="alert alert-danger">Content is Required!
+                  </div>
+                </div>
+                <br>
+                <button class="w3-button w3-block w3-green w3-section" [disabled]="form.invalid" type="submit">Give-Answer</button>
+                <br>
+              </form>
+
+            <!-- <div *ngIf = "!apple()">
+              <p>Update</p>
+              <form [formGroup]="updateForm" (ngSubmit) = "updateAnswer()">
+                <p>{{userAnswer}}</p>
+                <div class="form-group"> 
+                  <textarea 
+                  formControlName = "ucontent" 
+                    id="ucontent" 
+                    cols="46" 
+                    rows="8"
+                    class="form-control"
+                    >
+                  </textarea>
+                  <div
+                    *ngIf = "ucontent.touched && ucontent.invalid"
+                    class="alert alert-danger">Content is Required!
+                  </div>
+                </div>
+                <br>
+                <div class="w3-half">
+                  <button class="w3-button w3-block w3-green w3-section" [disabled]="updateForm.invalid" type="submit">Update-Post</button>
+                </div>
+                <div class="w3-half">
+                  <button class="w3-button w3-block w3-red w3-section" (click) = "deletePost()">Delete-Post</button>
+                </div>
+                <br>
+              </form>
+              <button class="w3-button w3-block w3-red w3-section" (click) = "check()">check</button>
+            </div> -->
+          <!-- <p co
+            ntenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
+        </div>
+      </div>
+      <br>
+      
+      
+    <!-- End Right Column -->
+    </div>
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+</body>
+</html> 
+
