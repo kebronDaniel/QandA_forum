@@ -17,6 +17,8 @@ import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { DatafetchService } from './datafetch.service';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
+
 
 
 
@@ -31,7 +33,8 @@ import { QuestionDetailsComponent } from './question-details/question-details.co
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    QuestionDetailsComponent
+    QuestionDetailsComponent,
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { QuestionDetailsComponent } from './question-details/question-details.co
       {path : '', component : HomeComponent},
       {path: 'login', component : LoginComponent},
       {path : 'register', component : RegisterComponent},
-      {path : 'question/:id', component : QuestionDetailsComponent}
+      {path : 'question/:id', component : QuestionDetailsComponent},
+      {path : 'addQuestion', component : AddQuestionComponent},
       // {path : 'addPost', component : CreatePostComponent},
       // {path : 'postDetails/:id', component : PostDetailsComponent},
       // {path : '**', component: NotFoundComponent}

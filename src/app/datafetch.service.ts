@@ -6,7 +6,10 @@ export class DatafetchService {
 
   private url = "http://localhost:5000/questions";
   private oneQuestionurl = "http://localhost:5000/question/";
-  private allAnswers = "http://localhost:5000/answers/";
+  private allAnswersUrl = "http://localhost:5000/answers/";
+  private addQuestionsUrl = "http://localhost:5000/addQuestion/"
+  private addAnswerUrl = "http://localhost:5000/addAnswer/";
+  private updateAnswerUrl = "http://localhost:5000/updateAnswer/";
 
   constructor(private http : Http) { }
 
@@ -26,12 +29,27 @@ export class DatafetchService {
   }
 
   getAnswers(id){
-    return this.http.get(this.allAnswers + id)
+    return this.http.get(this.allAnswersUrl + id)
       .map(response => response.json());
   }
 
   getUserAnswers(q_id, u_id){
-    return this.http.get(this.allAnswers + q_id + '/' + u_id)
+    return this.http.get(this.allAnswersUrl + q_id + '/' + u_id)
+      .map(response => response.json());
+  }
+
+  askQuestion(u_id, value){
+    return this.http.post(this.addQuestionsUrl + u_id, value)
+      .map(response => response.json());
+  }
+
+  addAnswer(q_id,u_id, value){
+    return this.http.post(this.addAnswerUrl + q_id + '/' + u_id, value)
+      .map(response => response.json());
+  }
+
+  updateAnswer(q_id,u_id, value){
+    return this.http.put(this.updateAnswerUrl + q_id + '/' + u_id, value)
       .map(response => response.json());
   }
   

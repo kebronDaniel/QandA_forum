@@ -24,7 +24,7 @@ export class PostService {
     ;
   }
 
-  addPost(value){
+  addPost(value){ 
     return this.http.post(this.postUrl,value)
     .map(
       response => response.json()
