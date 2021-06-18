@@ -48,10 +48,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     
     <!-- Middle Column -->
     <div class="w3-col m7">
-      <h4>Question : {{question}}</h4>
+      <h4>Your Question : {{question}}</h4>
       <div *ngFor = "let answer of answers">
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-          <span class="w3-right w3-opacity">Show Time stamp</span>
           <h4>{{user}}</h4><br>
           <hr class="w3-clear">
           <p>{{answer.content}}</p>
@@ -60,7 +59,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
               </div>
               <div class="w3-half">
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     <!-- End Middle Column -->
@@ -91,6 +90,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 <br>
                 <button class="w3-button w3-block w3-green w3-section" [disabled]="form.invalid" type="submit">Give-Answer</button>
+                <div *ngIf = "canDelete()">
+                  <button (click) = "deleteAnswer()" class="w3-button w3-block w3-red w3-section" type="submit">Delete-Answer</button>
+                </div>
                 <br>
               </form>
 

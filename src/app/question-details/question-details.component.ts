@@ -20,7 +20,6 @@ export class QuestionDetailsComponent implements OnInit {
   user_id:number;
   question_id : number;
   serverResponce:string = " ";
-  hasAnswer:boolean;
 
   constructor(private datafetch : DatafetchService, 
       private router : Router, 

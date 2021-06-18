@@ -15,12 +15,14 @@ export class MyQuestionDetailsComponent implements OnInit {
   answers:any[];
   question_id : number;
   user_id:number;
+  serverResponce:string = " ";
+  userAnswer:string = "";
 
   constructor(private datafetch : DatafetchService, 
     private router : Router, 
     private route : ActivatedRoute,
     private authservice : AuthService
-  ) { }
+  ) { } 
 
   ngOnInit() {
     let q_id  = +this.route.snapshot.paramMap.get('id');
@@ -39,6 +41,20 @@ export class MyQuestionDetailsComponent implements OnInit {
       .subscribe(
         answers => {
           this.answers = answers
+        },
+        error => { 
+          alert('Un expected Error Occured');
+          console.log(error); 
+        }
+      );
+      
+      this.user_id = this.authservice.getCurrentUser().user_id;
+
+      this.datafetch.getUserAnswer(q_id,this.user_id)
+      .subscribe(
+        answer => {
+          this.userAnswer = answer.content
+          console.log(this.userAnswer)
         },
         error => { 
           alert('Un expected Error Occured');
@@ -71,6 +87,27 @@ export class MyQuestionDetailsComponent implements OnInit {
       );
       this.router.navigate(['/']);
     // To do: being able to redirect to the home page.
+  }
+
+  deleteAnswer(){
+    let user_id = this.authservice.getCurrentUser().user_id;
+    this.datafetch.deleteUserAnswer(this.question_id,user_id)
+    .subscribe(
+      result => {
+        this.serverResponce = result
+    }, error => {
+      alert('Un expected Error Occured');
+      console.log(error);
+    }
+    );
+    this.router.navigate(['/']);
+  }
+
+  canDelete(){
+    if(this.userAnswer == undefined){
+      return false
+    }
+    return true
   }
  
 }
