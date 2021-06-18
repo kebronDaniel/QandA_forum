@@ -24,11 +24,15 @@ export class AddQuestionComponent implements OnInit {
   }
 
   form = new FormGroup({
+    'about': new FormControl('', Validators.required),
     'content': new FormControl('', Validators.required),
   })
 
   get content(){
     return this.form.get('content');
+  }
+  get about(){
+    return this.form.get('about');
   }
 
 

@@ -1,11 +1,25 @@
 <div class="col-md-4"></div>
-
+ 
 <div class="col-md-4">
   <div *ngIf = "authservice.isLoggedIn()">
     <form [formGroup]="form" (ngSubmit) = "ask()">
 
       <h2 class="form-signin- headging">Ask A Question?</h2>
       <hr>
+
+      <div class="form-group">
+        <label for="about">Topic</label> 
+        <input 
+          formControlName="about"
+          id="about"
+          type="text"
+          class="form-control"
+        >
+        <div
+          *ngIf = "about.touched && about.invalid"
+          class="alert alert-danger">Topic is Required!
+        </div>
+      </div>
 
       <div class="form-group"> 
         <label for="content">Your Question</label>

@@ -12,6 +12,7 @@ export class DatafetchService {
   private updateAnswerUrl = "http://localhost:5000/updateAnswer/";
   private deleteAnswerUrl = "http://localhost:5000/deleteAnswer/";
   private checkUserAnswersUrl = "http://localhost:5000/checkAnswers/";
+  private getUserAnswerUrl = "http://localhost:5000/getUserAnswer/";
   private getMyQuestionsUrl = "http://localhost:5000/myQuestions/";
 
   constructor(private http : Http) { }
@@ -26,8 +27,8 @@ export class DatafetchService {
     ;
   }
 
-  getOneQuestion(id){
-    return this.http.get(this.oneQuestionurl + id)
+  getOneQuestion(q_id){
+    return this.http.get(this.oneQuestionurl + q_id)
       .map(response => response.json());
   }
 
@@ -36,8 +37,8 @@ export class DatafetchService {
       .map(response => response.json());
   }
 
-  getAnswers(id){
-    return this.http.get(this.allAnswersUrl + id)
+  getAnswers(q_id){
+    return this.http.get(this.allAnswersUrl + q_id)
       .map(response => response.json());
   }
 
@@ -71,5 +72,11 @@ export class DatafetchService {
     return this.http.get(this.checkUserAnswersUrl + q_id + '/' + u_id)
       .map(response => response.json());
   }
+
+  getUserAnswer(q_id, u_id){
+    return this.http.get(this.getUserAnswerUrl + q_id + '/' + u_id)
+      .map(response => response.json());
+  }
+
 
 }

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'app/auth.service';
 import { DatafetchService } from 'app/datafetch.service';
-import { isEmpty } from 'rxjs/operator/isEmpty';
+
 
 
 @Component({
@@ -15,11 +15,12 @@ export class QuestionDetailsComponent implements OnInit {
 
   question:string = "";
   answers:any[];
-  userAnswer:any [];
+  userAnswer:string = "";
   user = "";
   user_id:number;
   question_id : number;
   serverResponce:string = " ";
+  hasAnswer:boolean;
 
   constructor(private datafetch : DatafetchService, 
       private router : Router, 
@@ -59,17 +60,18 @@ export class QuestionDetailsComponent implements OnInit {
 
     // This is to get the answers by the user that logged in
     
-    this.datafetch.getUserAnswers(q_id,this.user_id)
+    this.datafetch.getUserAnswer(q_id,this.user_id)
       .subscribe(
         answer => {
           this.userAnswer = answer.content
+          console.log(this.userAnswer)
         },
         error => { 
           alert('Un expected Error Occured');
           console.log(error); 
         }
       );
-  } 
+  }  
 
   form = new FormGroup({
     'content': new FormControl('', Validators.required),
@@ -121,8 +123,9 @@ export class QuestionDetailsComponent implements OnInit {
     // To do: being able to redirect to the home page.
   }
 
-  deletePost(){
-    this.datafetch.deleteUserAnswer(this.question_id,this.user_id)
+  deleteAnswer(){
+    let user_id = this.authservice.getCurrentUser().user_id;
+    this.datafetch.deleteUserAnswer(this.question_id,user_id)
     .subscribe(
       result => {
         this.serverResponce = result
@@ -132,6 +135,20 @@ export class QuestionDetailsComponent implements OnInit {
     }
     );
     this.router.navigate(['/']);
+  }
+  
+  checkAnswer(){
+    console.log(this.userAnswer)
+    if (this.userAnswer === " "){
+      return false
+    }
+    return true
+  }
+  canDelete(){
+    if(this.userAnswer == undefined){
+      return false
+    }
+    return true
   }
 
 }

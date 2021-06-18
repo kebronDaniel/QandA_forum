@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
     this.datafetch.getQuestions()
         .subscribe(
           allQuestions => {
-          this.questions = allQuestions; // here the allPosts is the mapped object in the service
+          this.questions = allQuestions;
+          console.log(allQuestions)  
+          // here the allPosts is the mapped object in the service
       }, error => {
         alert('Un expected Error Occured');
         console.log(error);

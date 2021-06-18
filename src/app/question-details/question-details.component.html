@@ -48,11 +48,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     
     <!-- Middle Column -->
     <div class="w3-col m7">
-      <h4>Question : {{question}}</h4>
+      <h5>Question : {{question}}</h5>
       <div *ngFor = "let answer of answers">
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-          <span class="w3-right w3-opacity">Show Time stamp</span>
-          <h4>{{user}}</h4><br>
+          <span class="w3-right w3-opacity">{{answer.date_posted}}</span>
+          <h4>{{answer.topic}}</h4><br>
           <hr class="w3-clear">
           <p>{{answer.content}}</p>
             <div class="w3-row-padding" style="margin:0 -16px">
@@ -72,6 +72,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <h5 class="w3-opacity">My Answer</h5>
+          <hr>
+          <div *ngIf = "checkAnswer()">
+            <p>{{userAnswer}}</p>
+          </div>
           <span class="w3-opacity">Put your new or corrected answer here.</span>
           <hr>
               <form [formGroup]="form" (ngSubmit) = "giveAnswer()">
@@ -91,40 +95,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 <br>
                 <button class="w3-button w3-block w3-green w3-section" [disabled]="form.invalid" type="submit">Give-Answer</button>
-                <br>
-              </form>
-
-            <!-- <div *ngIf = "!apple()">
-              <p>Update</p>
-              <form [formGroup]="updateForm" (ngSubmit) = "updateAnswer()">
-                <p>{{userAnswer}}</p>
-                <div class="form-group"> 
-                  <textarea 
-                  formControlName = "ucontent" 
-                    id="ucontent" 
-                    cols="46" 
-                    rows="8"
-                    class="form-control"
-                    >
-                  </textarea>
-                  <div
-                    *ngIf = "ucontent.touched && ucontent.invalid"
-                    class="alert alert-danger">Content is Required!
-                  </div>
-                </div>
-                <br>
-                <div class="w3-half">
-                  <button class="w3-button w3-block w3-green w3-section" [disabled]="updateForm.invalid" type="submit">Update-Post</button>
-                </div>
-                <div class="w3-half">
-                  <button class="w3-button w3-block w3-red w3-section" (click) = "deletePost()">Delete-Post</button>
+                <div *ngIf = "canDelete()">
+                  <button (click) = "deleteAnswer()" class="w3-button w3-block w3-red w3-section" type="submit">Delete-Answer</button>
                 </div>
                 <br>
               </form>
-              <button class="w3-button w3-block w3-red w3-section" (click) = "check()">check</button>
-            </div> -->
-          <!-- <p co
-            ntenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p> -->
         </div>
       </div>
       <br>
