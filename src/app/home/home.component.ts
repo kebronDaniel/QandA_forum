@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
         .subscribe(
           allQuestions => {
           this.questions = allQuestions;
-          console.log(allQuestions)  
           // here the allPosts is the mapped object in the service
       }, error => {
         alert('Un expected Error Occured');

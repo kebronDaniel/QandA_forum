@@ -1,12 +1,3 @@
-<!-- <div>
-  <ul class="list-group">
-    <li *ngFor = "let question of questions"
-      class="list-group-item">
-      <a [routerLink]="['question/', question.id]">{{question.content}}</a>
-    </li>
-  </ul>
-</div> -->
-
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -31,12 +22,22 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <br>
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">Question based on the topics below</h4>
+         <h4 class="w3-center">Get By Topic</h4>
          <hr>
          <div *ngFor = "let question of questions">
-          <a [routerLink]="['question/', question.id]" > <b>{{question.about}}</b></a>
-          <hr>
+           <div *ngIf = "!authservice.isLoggedIn()">
+              <a routerLink="login" > <b>{{question.about}}</b></a>
+              <hr>
+            </div>
         </div>
+
+        <div *ngFor = "let question of questions">
+          <div *ngIf = "authservice.isLoggedIn()">
+             <a [routerLink]="['question/', question.id]"> <b>{{question.about}}</b></a>
+             <hr>
+           </div>
+       </div>
+
         </div>
       </div>
       <br>
