@@ -26,16 +26,17 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   <!-- The Grid -->
   <div class="w3-row">
     <!-- Left Column -->
-    <div class="w3-col m3">
+    <div class="w3-col m4">
       <!-- Profile -->
       <br>
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">Looking For</h4>
+         <h4 class="w3-center">Question based on the topics below</h4>
          <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+         <div *ngFor = "let question of questions">
+          <a [routerLink]="['question/', question.id]" > <b>{{question.about}}</b></a>
+          <hr>
+        </div>
         </div>
       </div>
       <br>
@@ -46,7 +47,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   
     <!-- Middle Column -->
      
-      <div class="w3-col m7">
+      <div class="w3-col m8">
         <div *ngFor = "let question of questions">
           <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
             <span class="w3-right w3-opacity">{{question.date_posted}}</span>
@@ -63,7 +64,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 </div>
                 
                 <div class="w3-half">
-              </div>
+              </div> 
             </div>
           </div>
         </div>

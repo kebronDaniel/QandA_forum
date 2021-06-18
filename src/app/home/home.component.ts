@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.datafetch.getQuestions()
+    this.datafetch.getQuestions() 
         .subscribe(
           allQuestions => {
           this.questions = allQuestions;

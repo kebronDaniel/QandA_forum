@@ -20,6 +20,7 @@ import { QuestionDetailsComponent } from './question-details/question-details.co
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { MyQuestionsComponent } from './my-questions/my-questions.component';
 import { MyQuestionDetailsComponent } from './my-question-details/my-question-details.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 
@@ -38,7 +39,7 @@ import { MyQuestionDetailsComponent } from './my-question-details/my-question-de
     QuestionDetailsComponent,
     AddQuestionComponent,
     MyQuestionsComponent,
-    MyQuestionDetailsComponent
+    MyQuestionDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,10 +50,10 @@ import { MyQuestionDetailsComponent } from './my-question-details/my-question-de
       {path : '', component : HomeComponent},
       {path: 'login', component : LoginComponent},
       {path : 'register', component : RegisterComponent},
-      {path : 'question/:id', component : QuestionDetailsComponent},
-      {path : 'addQuestion', component : AddQuestionComponent},
-      {path : 'myQuestions/question/:id', component : MyQuestionDetailsComponent},
-      {path : 'myQuestions', component : MyQuestionsComponent},
+      {path : 'question/:id', component : QuestionDetailsComponent,canActivate: [AuthGuardService]},
+      {path : 'addQuestion', component : AddQuestionComponent,canActivate: [AuthGuardService]},
+      {path : 'myQuestions/question/:id', component : MyQuestionDetailsComponent,canActivate: [AuthGuardService]},
+      {path : 'myQuestions', component : MyQuestionsComponent, canActivate: [AuthGuardService]},
       // {path : 'addPost', component : CreatePostComponent},
       // {path : 'postDetails/:id', component : PostDetailsComponent},
       // {path : '**', component: NotFoundComponent}
@@ -61,7 +62,8 @@ import { MyQuestionDetailsComponent } from './my-question-details/my-question-de
   providers: [
     PostService,
     AuthService,
-    DatafetchService
+    DatafetchService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
